@@ -13,26 +13,14 @@
       --ink-soft: #3D3A35;
       --ink-muted: #6B6760;
       --gold: #C9943A;
-      --gold-light: #E8C878;
       --cream: #FAF7F2;
       --warm-white: #FFFDF9;
       --border: #E0DDD8;
     }
 
-    html, body {
-      height: 100%;
-      background: var(--cream);
-      color: var(--ink);
-      font-family: 'DM Sans', sans-serif;
-    }
+    html, body { height: 100%; background: var(--cream); color: var(--ink); font-family: 'DM Sans', sans-serif; }
+    body { display: flex; flex-direction: column; min-height: 100vh; }
 
-    body {
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
-
-    /* Noise texture overlay */
     body::before {
       content: '';
       position: fixed;
@@ -42,7 +30,6 @@
       z-index: 0;
     }
 
-    /* Header */
     header {
       padding: 28px 40px;
       display: flex;
@@ -54,261 +41,79 @@
       animation: fadeDown 0.6s ease both;
     }
 
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none;
-    }
+    .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .logo-mark { width: 36px; height: 36px; background: var(--ink); border-radius: 8px; display: flex; align-items: center; justify-content: center; }
+    .logo-mark svg { width: 20px; height: 20px; }
+    .logo-text { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 700; color: var(--ink); letter-spacing: -0.2px; }
+    .logo-sub { font-size: 11px; color: var(--ink-muted); font-weight: 400; margin-top: 1px; }
+    .header-contact { font-size: 13px; color: var(--ink-muted); }
+    .header-contact a { color: var(--gold); text-decoration: none; font-weight: 500; }
 
-    .logo-mark {
-      width: 36px;
-      height: 36px;
-      background: var(--ink);
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+    main { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 80px 40px; position: relative; z-index: 1; }
 
-    .logo-mark svg {
-      width: 20px;
-      height: 20px;
-    }
-
-    .logo-text {
-      font-family: 'Playfair Display', serif;
-      font-size: 16px;
-      font-weight: 700;
-      color: var(--ink);
-      letter-spacing: -0.2px;
-    }
-
-    .logo-sub {
-      font-size: 11px;
-      color: var(--ink-muted);
-      font-weight: 400;
-      margin-top: 1px;
-    }
-
-    .header-contact {
-      font-size: 13px;
-      color: var(--ink-muted);
-    }
-
-    .header-contact a {
-      color: var(--gold);
-      text-decoration: none;
-      font-weight: 500;
-    }
-
-    /* Main */
-    main {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 80px 40px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero {
-      max-width: 720px;
-      width: 100%;
-      text-align: center;
-      animation: fadeUp 0.8s ease 0.2s both;
-    }
+    .hero { max-width: 720px; width: 100%; text-align: center; animation: fadeUp 0.8s ease 0.2s both; }
 
     .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--warm-white);
-      border: 1px solid var(--border);
-      border-radius: 40px;
-      padding: 6px 16px;
-      font-size: 11px;
-      font-weight: 500;
-      color: var(--ink-muted);
-      letter-spacing: 0.8px;
-      text-transform: uppercase;
-      margin-bottom: 32px;
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--warm-white); border: 1px solid var(--border);
+      border-radius: 40px; padding: 6px 16px;
+      font-size: 11px; font-weight: 500; color: var(--ink-muted);
+      letter-spacing: 0.8px; text-transform: uppercase; margin-bottom: 32px;
     }
-
-    .eyebrow-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--gold);
-    }
+    .eyebrow-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
 
     h1 {
       font-family: 'Playfair Display', serif;
       font-size: clamp(36px, 6vw, 64px);
-      font-weight: 700;
-      line-height: 1.1;
-      color: var(--ink);
-      letter-spacing: -1px;
-      margin-bottom: 24px;
+      font-weight: 700; line-height: 1.1; color: var(--ink);
+      letter-spacing: -1px; margin-bottom: 24px;
     }
+    h1 span { color: var(--gold); }
 
-    h1 span {
-      color: var(--gold);
-    }
+    .divider { width: 48px; height: 2px; background: var(--gold); margin: 0 auto 32px; border-radius: 2px; animation: fadeUp 0.8s ease 0.3s both; }
 
     .hero-body {
-      font-size: 17px;
-      line-height: 1.7;
-      color: var(--ink-soft);
-      max-width: 560px;
-      margin: 0 auto 48px;
-      font-weight: 300;
+      font-size: 17px; line-height: 1.7; color: var(--ink-soft);
+      max-width: 560px; margin: 0 auto 48px; font-weight: 300;
     }
 
-    /* Product card */
     .product-card {
-      background: var(--warm-white);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 32px;
-      display: flex;
-      align-items: center;
-      gap: 24px;
-      max-width: 480px;
-      margin: 0 auto 48px;
-      text-align: left;
+      background: var(--warm-white); border: 1px solid var(--border);
+      border-radius: 20px; padding: 32px;
+      display: flex; align-items: center; gap: 24px;
+      max-width: 480px; margin: 0 auto 48px; text-align: left;
       box-shadow: 0 4px 24px rgba(28,26,23,0.06);
       animation: fadeUp 0.8s ease 0.4s both;
     }
+    .product-icon { width: 64px; height: 64px; background: var(--ink); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 30px; flex-shrink: 0; }
+    .product-info h2 { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: var(--ink); margin-bottom: 6px; }
+    .product-info p { font-size: 14px; color: var(--ink-muted); line-height: 1.5; margin-bottom: 12px; }
+    .platform-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--cream); border: 1px solid var(--border); border-radius: 6px; padding: 4px 10px; font-size: 11px; font-weight: 500; color: var(--ink-soft); }
 
-    .product-icon {
-      width: 64px;
-      height: 64px;
-      background: var(--ink);
-      border-radius: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 30px;
-      flex-shrink: 0;
-    }
+    .info-strip { display: flex; gap: 40px; justify-content: center; flex-wrap: wrap; animation: fadeUp 0.8s ease 0.6s both; }
+    .info-item { text-align: center; }
+    .info-label { font-size: 10px; font-weight: 500; letter-spacing: 0.8px; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 4px; }
+    .info-value { font-size: 14px; font-weight: 500; color: var(--ink); }
 
-    .product-info h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 22px;
-      font-weight: 700;
-      color: var(--ink);
-      margin-bottom: 6px;
-    }
-
-    .product-info p {
-      font-size: 14px;
-      color: var(--ink-muted);
-      line-height: 1.5;
-      margin-bottom: 12px;
-    }
-
-    .platform-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: var(--cream);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 4px 10px;
-      font-size: 11px;
-      font-weight: 500;
-      color: var(--ink-soft);
-    }
-
-    /* Info strip */
-    .info-strip {
-      display: flex;
-      gap: 40px;
-      justify-content: center;
-      flex-wrap: wrap;
-      animation: fadeUp 0.8s ease 0.6s both;
-    }
-
-    .info-item {
-      text-align: center;
-    }
-
-    .info-label {
-      font-size: 10px;
-      font-weight: 500;
-      letter-spacing: 0.8px;
-      text-transform: uppercase;
-      color: var(--ink-muted);
-      margin-bottom: 4px;
-    }
-
-    .info-value {
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--ink);
-    }
-
-    /* Footer */
     footer {
       padding: 24px 40px;
       border-top: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: gap;
-      position: relative;
-      z-index: 1;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 12px;
+      position: relative; z-index: 1;
       animation: fadeUp 0.6s ease 0.8s both;
     }
+    .footer-legal { font-size: 12px; color: var(--ink-muted); line-height: 1.6; }
+    .footer-legal strong { color: var(--ink-soft); }
+    .footer-right { font-size: 12px; color: var(--ink-muted); }
 
-    .footer-legal {
-      font-size: 12px;
-      color: var(--ink-muted);
-      line-height: 1.6;
-    }
-
-    .footer-legal strong {
-      color: var(--ink-soft);
-    }
-
-    .footer-right {
-      font-size: 12px;
-      color: var(--ink-muted);
-    }
-
-    .footer-right a {
-      color: var(--gold);
-      text-decoration: none;
-    }
-
-    /* Gold divider */
-    .divider {
-      width: 48px;
-      height: 2px;
-      background: var(--gold);
-      margin: 0 auto 32px;
-      border-radius: 2px;
-      animation: fadeUp 0.8s ease 0.3s both;
-    }
-
-    /* Animations */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes fadeDown {
-      from { opacity: 0; transform: translateY(-10px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
 
     @media (max-width: 600px) {
       header { padding: 20px 24px; }
       main { padding: 60px 24px; }
-      footer { padding: 20px 24px; flex-direction: column; gap: 12px; text-align: center; }
+      footer { padding: 20px 24px; flex-direction: column; text-align: center; }
       .product-card { flex-direction: column; text-align: center; }
       .info-strip { gap: 24px; }
       .header-contact { display: none; }
@@ -330,7 +135,7 @@
       </div>
     </a>
     <div class="header-contact">
-      Contact: <a href="mailto:quickadvicebyai@gmail.com">quickadvicebyai@gmail.com</a>
+      Contact: <a href="mailto:rollinginnovationsus@gmail.com">rollinginnovationsus@gmail.com</a>
     </div>
   </header>
 
@@ -355,9 +160,7 @@
         <div class="product-info">
           <h2>QuickAdvice</h2>
           <p>10 precision-engineered AI expert personas covering finance, law, health, wellness, real estate, workplace, and more.</p>
-          <span class="platform-badge">
-            📱 Android — Google Play
-          </span>
+          <span class="platform-badge">📱 Android — Google Play</span>
         </div>
       </div>
 
@@ -382,8 +185,8 @@
   <footer>
     <div class="footer-legal">
       <strong>Rolling Innovations, LLC</strong><br />
-      Sapulpa, Oklahoma, United States &nbsp;·&nbsp; quickadvice.pro<br />
-      Contact: <a href="mailto:quickadvicebyai@gmail.com" style="color:var(--gold);text-decoration:none;">quickadvicebyai@gmail.com</a>
+      Sapulpa, Oklahoma, United States &nbsp;·&nbsp; rollinginnovations.com<br />
+      Contact: <a href="mailto:rollinginnovationsus@gmail.com" style="color:var(--gold);text-decoration:none;">rollinginnovationsus@gmail.com</a>
     </div>
     <div class="footer-right">
       &copy; 2026 Rolling Innovations, LLC. All rights reserved.
