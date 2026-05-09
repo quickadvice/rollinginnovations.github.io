@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rolling Innovations, LLC</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #1C1A17;
+      --ink-soft: #3D3A35;
+      --ink-muted: #6B6760;
+      --gold: #C9943A;
+      --gold-light: #E8C878;
+      --cream: #FAF7F2;
+      --warm-white: #FFFDF9;
+      --border: #E0DDD8;
+    }
+
+    html, body {
+      height: 100%;
+      background: var(--cream);
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* Noise texture overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Header */
+    header {
+      padding: 28px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      z-index: 1;
+      animation: fadeDown 0.6s ease both;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .logo-mark {
+      width: 36px;
+      height: 36px;
+      background: var(--ink);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo-mark svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .logo-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--ink);
+      letter-spacing: -0.2px;
+    }
+
+    .logo-sub {
+      font-size: 11px;
+      color: var(--ink-muted);
+      font-weight: 400;
+      margin-top: 1px;
+    }
+
+    .header-contact {
+      font-size: 13px;
+      color: var(--ink-muted);
+    }
+
+    .header-contact a {
+      color: var(--gold);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    /* Main */
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 40px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero {
+      max-width: 720px;
+      width: 100%;
+      text-align: center;
+      animation: fadeUp 0.8s ease 0.2s both;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--warm-white);
+      border: 1px solid var(--border);
+      border-radius: 40px;
+      padding: 6px 16px;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--ink-muted);
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      margin-bottom: 32px;
+    }
+
+    .eyebrow-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(36px, 6vw, 64px);
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--ink);
+      letter-spacing: -1px;
+      margin-bottom: 24px;
+    }
+
+    h1 span {
+      color: var(--gold);
+    }
+
+    .hero-body {
+      font-size: 17px;
+      line-height: 1.7;
+      color: var(--ink-soft);
+      max-width: 560px;
+      margin: 0 auto 48px;
+      font-weight: 300;
+    }
+
+    /* Product card */
+    .product-card {
+      background: var(--warm-white);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 32px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      max-width: 480px;
+      margin: 0 auto 48px;
+      text-align: left;
+      box-shadow: 0 4px 24px rgba(28,26,23,0.06);
+      animation: fadeUp 0.8s ease 0.4s both;
+    }
+
+    .product-icon {
+      width: 64px;
+      height: 64px;
+      background: var(--ink);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      flex-shrink: 0;
+    }
+
+    .product-info h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+
+    .product-info p {
+      font-size: 14px;
+      color: var(--ink-muted);
+      line-height: 1.5;
+      margin-bottom: 12px;
+    }
+
+    .platform-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 4px 10px;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--ink-soft);
+    }
+
+    /* Info strip */
+    .info-strip {
+      display: flex;
+      gap: 40px;
+      justify-content: center;
+      flex-wrap: wrap;
+      animation: fadeUp 0.8s ease 0.6s both;
+    }
+
+    .info-item {
+      text-align: center;
+    }
+
+    .info-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      margin-bottom: 4px;
+    }
+
+    .info-value {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--ink);
+    }
+
+    /* Footer */
+    footer {
+      padding: 24px 40px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: gap;
+      position: relative;
+      z-index: 1;
+      animation: fadeUp 0.6s ease 0.8s both;
+    }
+
+    .footer-legal {
+      font-size: 12px;
+      color: var(--ink-muted);
+      line-height: 1.6;
+    }
+
+    .footer-legal strong {
+      color: var(--ink-soft);
+    }
+
+    .footer-right {
+      font-size: 12px;
+      color: var(--ink-muted);
+    }
+
+    .footer-right a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    /* Gold divider */
+    .divider {
+      width: 48px;
+      height: 2px;
+      background: var(--gold);
+      margin: 0 auto 32px;
+      border-radius: 2px;
+      animation: fadeUp 0.8s ease 0.3s both;
+    }
+
+    /* Animations */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
+      header { padding: 20px 24px; }
+      main { padding: 60px 24px; }
+      footer { padding: 20px 24px; flex-direction: column; gap: 12px; text-align: center; }
+      .product-card { flex-direction: column; text-align: center; }
+      .info-strip { gap: 24px; }
+      .header-contact { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a class="logo" href="#">
+      <div class="logo-mark">
+        <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10 2L12.5 7.5H18L13.5 11L15.5 17L10 13.5L4.5 17L6.5 11L2 7.5H7.5L10 2Z" fill="#C9943A"/>
+        </svg>
+      </div>
+      <div>
+        <div class="logo-text">Rolling Innovations</div>
+        <div class="logo-sub">LLC — Sapulpa, Oklahoma</div>
+      </div>
+    </a>
+    <div class="header-contact">
+      Contact: <a href="mailto:quickadvicebyai@gmail.com">quickadvicebyai@gmail.com</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="hero">
+
+      <div class="eyebrow">
+        <span class="eyebrow-dot"></span>
+        Software & Mobile Applications
+      </div>
+
+      <h1>Precision-engineered<br /><span>AI for real life.</span></h1>
+
+      <div class="divider"></div>
+
+      <p class="hero-body">
+        Rolling Innovations, LLC is a software and mobile application development company based in Oklahoma, building AI-powered consumer tools that deliver structured, expert-quality guidance to everyday people.
+      </p>
+
+      <div class="product-card">
+        <div class="product-icon">⚡</div>
+        <div class="product-info">
+          <h2>QuickAdvice</h2>
+          <p>10 precision-engineered AI expert personas covering finance, law, health, wellness, real estate, workplace, and more.</p>
+          <span class="platform-badge">
+            📱 Android — Google Play
+          </span>
+        </div>
+      </div>
+
+      <div class="info-strip">
+        <div class="info-item">
+          <div class="info-label">Entity Type</div>
+          <div class="info-value">Limited Liability Company</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">State</div>
+          <div class="info-value">Oklahoma, USA</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">Industry</div>
+          <div class="info-value">Software & Mobile Apps</div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-legal">
+      <strong>Rolling Innovations, LLC</strong><br />
+      Sapulpa, Oklahoma, United States &nbsp;·&nbsp; quickadvice.pro<br />
+      Contact: <a href="mailto:quickadvicebyai@gmail.com" style="color:var(--gold);text-decoration:none;">quickadvicebyai@gmail.com</a>
+    </div>
+    <div class="footer-right">
+      &copy; 2026 Rolling Innovations, LLC. All rights reserved.
+    </div>
+  </footer>
+
+</body>
+</html>
